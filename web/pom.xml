@@ -14,7 +14,17 @@
     <dependencies>
         <dependency>
             <groupId>com.rosy</groupId>
-            <artifactId>framework</artifactId>
+            <artifactId>austinx-service-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rosy</groupId>
+            <artifactId>austinx-handler</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rosy</groupId>
+            <artifactId>austinx-service-api-impl</artifactId>
         </dependency>
 
         <dependency>

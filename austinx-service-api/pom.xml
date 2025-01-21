@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.rosy</groupId>
-            <artifactId>framework</artifactId>
+            <artifactId>austinx-support</artifactId>
         </dependency>
     </dependencies>
 </project>

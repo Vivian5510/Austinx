@@ -1,3 +1,48 @@
+# TODO: choose: kafka/eventBus/rocketMq/rabbitMq, default is eventBus
+austinx:
+  business:
+    topic:
+      name: austinxBusiness  # 业务消息队列的名称
+    recall:
+      topic:
+        name: austinxRecall  # 召回消息队列的名称
+    tagId:
+      value: 1  # 标签 ID
+
+
+  mq:
+    pipeline: eventBus  # 选择消息队列的类型
+
+  # Kafka 配置（如果 austinx.mq.pipeline=kafka 时必须配置）
+  kafka:
+    ip:
+    port:
+
+  # RocketMQ 配置（如果 austinx.mq.pipeline=rocketMq 时必须配置）
+  rocketmq:
+    nameserver:
+      ip: localhost
+      port: 9876
+    biz:
+      consumer:
+        group: unique-biz-consumer-group  # 业务消费者组名称
+    recall:
+      consumer:
+        group: unique-recall-consumer-group  # 召回消费者组名称
+
+  # RabbitMQ 配置（如果 austinx.mq.pipeline=rabbitMq 时必须配置）
+  rabbitmq:
+    ip:
+    port:
+    topic:
+      name: austinxRabbit  # RabbitMQ 消息队列的名称
+    exchange:
+      name: austinx.point  # RabbitMQ 交换机的名称
+
+
+
+
+############################### server 配置 ###############################
 server:
   address: 0.0.0.0
   port: 8080
@@ -7,7 +52,9 @@ server:
     session:
       cookie:
         max-age: 2592000
+############################### server 配置 ###############################
 
+############################### spring 配置 ###############################
 spring:
   application:
     name: austinx
@@ -20,9 +67,9 @@ spring:
     url: jdbc:mysql://localhost:3306/austinx
     username: root
     password: 101673
+  ############################### spring 配置 ###############################
 
-
-  # redis 配置
+  ############################### redis 配置 ###############################
   data:
     redis:
       # 地址
@@ -45,7 +92,36 @@ spring:
           max-active: 8
           # #连接池最大阻塞等待时间（使用负值表示没有限制）
           max-wait: -1ms
+  ############################### redis 配置 ###############################
 
+  ############################## Kafka 配置 ###############################
+  kafka:
+    bootstrap-servers: "${austinx.kafka.ip}:${austinx.kafka.port}"  # 使用 austinx.kafka 配置的 IP 和端口
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto:
+        offset:
+          reset: earliest  # 从最早的消息开始消费
+      auto-commit-interval: 1000
+      enable-auto-commit: true
+  ############################## Kafka 配置 ###############################
+
+  ############################## Kafka 配置 ###############################
+  rabbitmq:
+    host: "${austinx.rabbitmq.ip}"  # 使用 austinx.rabbitmq 配置的 IP
+    port: "${austinx.rabbitmq.port}"  # 使用 austinx.rabbitmq 配置的端口
+    username: root  # RabbitMQ 用户名
+    password: 123456  # RabbitMQ 密码
+    publisher-confirm-type: correlated  # 启用确认机制
+    publisher-returns: true  # 启用消息返回机制
+    virtual-host: /  # 设置虚拟主机，默认是 "/"
+############################## Kafka 配置 ###############################
+
+############################### mybatis-plus 配置 ###############################
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -55,12 +131,22 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
       id-type: auto
+############################### mybatis-plus 配置 ###############################
 
+############################### springdoc 配置 ###############################
 springdoc:
   api-docs:
     path: /v3/api-docs  # 配置 OpenAPI 文档的路径
   swagger-ui:
     path: /swagger-ui.html  # 配置 Swagger UI 的路径
     enabled: true  # 启用 Swagger UI
+############################## springdoc 配置 ###############################
 
+########################################## RocketMq 配置 ##########################################
+rocketmq:
+  name-server: "${austinx.rocketmq.nameserver.ip}:${austinx.rocketmq.nameserver.port}"  # 使用 austinx.rocketmq 配置的 IP 和端口
+  producer:
+    group: unique-producer-group  # RocketMQ 生产者的消费者组名称
+
+########################################## RocketMq 配置 ##########################################
 

@@ -21,6 +21,9 @@
         <module>main</module>
         <module>austinx-service-api</module>
         <module>austinx-handler</module>
+        <module>austinx-support</module>
+        <module>austinx-service-api-impl</module>
+        <module>austinx-common</module>
     </modules>
 
     <properties>
@@ -49,6 +52,9 @@
         <velocity.version>2.4.1</velocity.version>
         <servlet.version>6.1.0</servlet.version>
         <tencentcloud-sdk-java.version>3.1.1184</tencentcloud-sdk-java.version>
+        <rocketmq.version>2.3.1</rocketmq.version>
+        <kafka.version>3.3.1</kafka.version>
+        <rabbit.version>3.2.1</rabbit.version>
     </properties>
 
     <dependencyManagement>
@@ -78,6 +84,41 @@
             <dependency>
                 <groupId>com.rosy</groupId>
                 <artifactId>main</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!--austinx-support模块-->
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-support</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!--austinx-service-api模块-->
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-service-api</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!--austinx-handler模块-->
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-handler</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!--austinx-service-api-impl模块-->
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-service-api-impl</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!--austinx-common模块-->
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-common</artifactId>
                 <version>0.0.1</version>
             </dependency>
 
@@ -204,6 +245,25 @@
                 <artifactId>tencentcloud-sdk-java</artifactId>
                 <version>${tencentcloud-sdk-java.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${rabbit.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

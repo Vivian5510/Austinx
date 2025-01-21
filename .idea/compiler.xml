@@ -8,18 +8,24 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="austinx-handler" />
-        <module name="main" />
+        <module name="austinx-support" />
         <module name="framework" />
         <module name="austinx-service-api" />
         <module name="common" />
         <module name="web" />
+        <module name="austinx-service-api-impl" />
+        <module name="main" />
+        <module name="austinx-common" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="austinx-common" options="-parameters" />
       <module name="austinx-handler" options="-parameters" />
       <module name="austinx-service-api" options="-parameters" />
+      <module name="austinx-service-api-impl" options="-parameters" />
+      <module name="austinx-support" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="framework" options="-parameters" />
       <module name="main" options="-parameters" />
