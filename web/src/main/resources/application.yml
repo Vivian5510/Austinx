@@ -110,7 +110,7 @@ spring:
       enable-auto-commit: true
   ############################## Kafka 配置 ###############################
 
-  ############################## Kafka 配置 ###############################
+  ############################## RabbitMQ 配置 ###############################
   rabbitmq:
     host: "${austinx.rabbitmq.ip}"  # 使用 austinx.rabbitmq 配置的 IP
     port: "${austinx.rabbitmq.port}"  # 使用 austinx.rabbitmq 配置的端口
@@ -119,7 +119,7 @@ spring:
     publisher-confirm-type: correlated  # 启用确认机制
     publisher-returns: true  # 启用消息返回机制
     virtual-host: /  # 设置虚拟主机，默认是 "/"
-############################## Kafka 配置 ###############################
+  ############################## RabbitMQ 配置 ###############################
 
 ############################### mybatis-plus 配置 ###############################
 mybatis-plus:
@@ -142,11 +142,11 @@ springdoc:
     enabled: true  # 启用 Swagger UI
 ############################## springdoc 配置 ###############################
 
-########################################## RocketMq 配置 ##########################################
+########################################## RocketMQ 配置 ##########################################
 rocketmq:
   name-server: "${austinx.rocketmq.nameserver.ip}:${austinx.rocketmq.nameserver.port}"  # 使用 austinx.rocketmq 配置的 IP 和端口
   producer:
     group: unique-producer-group  # RocketMQ 生产者的消费者组名称
 
-########################################## RocketMq 配置 ##########################################
+########################################## RocketMQ 配置 ##########################################
 

@@ -24,6 +24,7 @@ public class ApiResponse extends HashMap<String, Object> {
      * 数据对象
      */
     public static final String DATA_TAG = "data";
+
     @Serial
     private static final long serialVersionUID = 1L;
 
