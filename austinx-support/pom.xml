@@ -31,5 +31,11 @@
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
         </dependency>
+
+        <!--动态线程池引入-->
+        <dependency>
+            <groupId>cn.dynamictp</groupId>
+            <artifactId>dynamic-tp-spring-boot-starter-apollo</artifactId>
+        </dependency>
     </dependencies>
 </project>

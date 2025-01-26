@@ -1,4 +1,3 @@
-# TODO: choose: kafka/eventBus/rocketMq/rabbitMq, default is eventBus
 austinx:
   business:
     topic:
@@ -7,16 +6,17 @@ austinx:
       topic:
         name: austinxRecall  # 召回消息队列的名称
     tagId:
-      value: 1  # 标签 ID
+      key: kafka_tag_id  # 标签 ID
+      value: com.rosy.austinx  # 标签值
 
 
   mq:
-    pipeline: eventBus  # 选择消息队列的类型
+    pipeline: kafka  # 选择消息队列的类型
 
   # Kafka 配置（如果 austinx.mq.pipeline=kafka 时必须配置）
   kafka:
-    ip:
-    port:
+    ip: 1.92.81.114
+    port: 9092
 
   # RocketMQ 配置（如果 austinx.mq.pipeline=rocketMq 时必须配置）
   rocketmq:
