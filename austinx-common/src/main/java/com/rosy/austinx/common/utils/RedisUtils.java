@@ -27,8 +27,6 @@ public class RedisUtils {
 
     /**
      * mGet将结果封装为Map
-     *
-     * @param keys
      */
     public Map<String, String> mGet(List<String> keys) {
         HashMap<String, String> result = new HashMap<>(keys.size());

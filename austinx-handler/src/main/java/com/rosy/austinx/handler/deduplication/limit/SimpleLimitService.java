@@ -53,8 +53,6 @@ public class SimpleLimitService extends AbstractLimitService {
 
     /**
      * 存入redis 实现去重
-     *
-     * @param readyPutRedisReceiver
      */
     private void putInRedis(Map<String, String> readyPutRedisReceiver,
                             Map<String, String> inRedisValue, Long deduplicationTime) {

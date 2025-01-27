@@ -31,10 +31,6 @@ public class FrequencyDeduplicationService extends AbstractDeduplicationService 
      * key ： receiver + templateId + sendChannel
      * <p>
      * 一天内一个用户只能收到某个渠道的消息 N 次
-     *
-     * @param taskInfo
-     * @param receiver
-     * @return
      */
     @Override
     public String deduplicationSingleKey(TaskInfo taskInfo, String receiver) {

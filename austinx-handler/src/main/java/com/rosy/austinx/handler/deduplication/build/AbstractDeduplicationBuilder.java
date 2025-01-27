@@ -33,5 +33,4 @@ public abstract class AbstractDeduplicationBuilder implements Builder {
         deduplicationParam.setTaskInfo(taskInfo);
         return deduplicationParam;
     }
-
 }

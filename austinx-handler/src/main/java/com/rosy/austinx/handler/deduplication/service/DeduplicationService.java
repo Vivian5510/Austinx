@@ -5,9 +5,7 @@ import com.rosy.austinx.handler.deduplication.DeduplicationParam;
 public interface DeduplicationService {
 
     /**
-     * 去重
-     *
-     * @param param
+     * 去重服务
      */
     void deduplication(DeduplicationParam param);
 }

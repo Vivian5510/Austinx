@@ -7,6 +7,7 @@ import com.rosy.austinx.handler.deduplication.DeduplicationParam;
 import com.rosy.austinx.handler.deduplication.service.AbstractDeduplicationService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scripting.support.ResourceScriptSource;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class SlideWindowLimitService extends AbstractLimitService {
 
     @PostConstruct
     public void init() {
-        redisScript = new DefaultRedisScript();
+        redisScript = new DefaultRedisScript<>();
         redisScript.setResultType(Long.class);
         redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("limit.lua")));
     }
