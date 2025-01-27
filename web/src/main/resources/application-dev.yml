@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+  # TODO  choose : [kafka]/[eventBus]/[rocketMq]/[rabbitMq],recommend  [eventBus] or  [kafka]
+austinx:
+  mq:
+    pipeline: eventBus
+
+  # todo [xxl-job] switch
+  xxl-job:
+    enabled: false
+
+  # todo choose: [apollo]/[nacos] switch  ,if [apollo] and [nacos] both false, use local.properties
+  apollo:
+    enabled: false
+  nacos:
+    enabled: false
+
+  # TODO [hades] switch
+  rule-engine:
+    enabled: false
+
+  # TODO if windows os and need upload file to send message  ,replace path !
+  business:
+    upload-crowd-path=/Users/21567/temp
