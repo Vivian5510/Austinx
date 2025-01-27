@@ -24,7 +24,7 @@ import java.util.Optional;
  * 启动消费者
  */
 @Service
-@ConditionalOnProperty(name = "austin.mq.pipeline", havingValue = MessageQueueConstant.KAFKA)
+@ConditionalOnProperty(name = "austinx.mq.pipeline", havingValue = MessageQueueConstant.KAFKA)
 @Slf4j
 public class ReceiverStart {
 
@@ -77,8 +77,6 @@ public class ReceiverStart {
     /**
      * 针对tag消息过滤
      * producer 将tag写进header里
-     *
-     * @return
      */
     @Bean
     public ConcurrentKafkaListenerContainerFactory filterContainerFactory(@Value("${austinx.business.tagId.key}") String tagIdKey,

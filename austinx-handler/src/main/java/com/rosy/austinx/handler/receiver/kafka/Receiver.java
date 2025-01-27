@@ -5,8 +5,10 @@ import com.alibaba.fastjson2.JSON;
 import com.rosy.austinx.common.constant.MessageQueueConstant;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
 import com.rosy.austinx.common.utils.GroupIdMappingUtils;
+import com.rosy.austinx.handler.service.ConsumeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Scope;
@@ -24,8 +26,11 @@ import java.util.Optional;
 @Slf4j
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-@ConditionalOnProperty(name = "austin.mq.pipeline", havingValue = MessageQueueConstant.KAFKA)
+@ConditionalOnProperty(name = "austinx.mq.pipeline", havingValue = MessageQueueConstant.KAFKA)
 public class Receiver {
+    @Autowired
+    private ConsumeService consumeService;
+
     /**
      * 发送消息
      */
@@ -41,14 +46,13 @@ public class Receiver {
              */
             if (topicGroupId.equals(messageGroupId)) {
                 log.info("groupId:{},params:{}", messageGroupId, JSON.toJSONString(taskInfoLists));
+                consumeService.consume2Send(taskInfoLists);
             }
         }
     }
 
     /**
      * 撤回消息
-     *
-     * @param consumerRecord
      */
     @KafkaListener(topics = "#{'${austinx.business.recall.topic.name}'}", groupId = "#{'${austinx.business.recall.group.name}'}", containerFactory = "filterContainerFactory")
     public void recall(ConsumerRecord<?, String> consumerRecord) {

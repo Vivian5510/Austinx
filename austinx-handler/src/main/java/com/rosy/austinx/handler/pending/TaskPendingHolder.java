@@ -35,7 +35,7 @@ public class TaskPendingHolder {
     public void init() {
         /**
          * example ThreadPoolName:austin.im.notice
-         *
+         * <p>
          * 可以通过apollo配置：dynamic-tp-apollo-dtp.yml  动态修改线程池的信息
          */
         for (String groupId : groupIds) {
@@ -48,9 +48,6 @@ public class TaskPendingHolder {
 
     /**
      * 得到对应的线程池
-     *
-     * @param groupId
-     * @return
      */
     public ExecutorService route(String groupId) {
         return taskPendingHolder.get(groupId);

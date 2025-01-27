@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class HandlerThreadPoolConfig {
 
-    private static final String PRE_FIX = "austin.";
+    private static final String PRE_FIX = "austinx.";
 
     /**
      * 业务：处理某个渠道的某种类型消息的线程池
@@ -32,6 +32,4 @@ public class HandlerThreadPoolConfig {
                 .workQueue(QueueTypeEnum.VARIABLE_LINKED_BLOCKING_QUEUE.getName(), ThreadPoolConstant.COMMON_QUEUE_SIZE, false)
                 .buildDynamic();
     }
-
-
 }
