@@ -1,6 +1,9 @@
 package com.rosy.austinx.handler.handler;
 
+import com.rosy.austinx.common.domain.entity.AnchorInfo;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
+import com.rosy.austinx.common.enums.AnchorState;
+import com.rosy.austinx.support.utils.LogUtils;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 发送各个渠道的handler
  */
 public abstract class BaseHandler implements Handler {
+    @Autowired
+    private LogUtils logUtils;
+
     @Autowired
     private HandlerHolder handlerHolder;
 
@@ -29,8 +35,10 @@ public abstract class BaseHandler implements Handler {
     @Override
     public void doHandler(TaskInfo taskInfo) {
         if (handler(taskInfo)) {
+            logUtils.print(AnchorInfo.builder().state(AnchorState.SEND_SUCCESS.getCode()).businessId(taskInfo.getBusinessId()).ids(taskInfo.getReceiver()).build());
             return;
         }
+        logUtils.print(AnchorInfo.builder().state(AnchorState.SEND_FAIL.getCode()).businessId(taskInfo.getBusinessId()).ids(taskInfo.getReceiver()).build());
     }
 
 

@@ -48,5 +48,10 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
+        <!--日志记录-->
+        <dependency>
+            <groupId>cn.monitor4all</groupId>
+            <artifactId>log-record-springboot3-starter</artifactId>
+        </dependency>
     </dependencies>
 </project>

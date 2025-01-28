@@ -1,6 +1,7 @@
 package com.rosy.austinx.service.api.impl.service;
 
 
+import cn.monitor4all.logRecord.annotation.OperationLog;
 import com.rosy.austinx.common.domain.entity.BasicResultVO;
 import com.rosy.austinx.service.api.domain.BatchSendRequest;
 import com.rosy.austinx.service.api.domain.SendRequest;
@@ -26,6 +27,7 @@ public class SendServiceImpl implements SendService {
     private ProcessController processController;
 
     @Override
+    @OperationLog(bizType = "SendService#batchSend", bizId = "#batchSendRequest.messageTemplateId", msg = "#batchSendRequest")
     public SendResponse send(SendRequest sendRequest) {
 
         SendTaskModel sendTaskModel = SendTaskModel.builder()

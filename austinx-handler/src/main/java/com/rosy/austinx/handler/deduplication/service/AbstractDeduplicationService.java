@@ -1,10 +1,12 @@
 package com.rosy.austinx.handler.deduplication.service;
 
 import cn.hutool.core.collection.CollUtil;
+import com.rosy.austinx.common.domain.entity.AnchorInfo;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
 import com.rosy.austinx.handler.deduplication.DeduplicationHolder;
 import com.rosy.austinx.handler.deduplication.DeduplicationParam;
 import com.rosy.austinx.handler.deduplication.limit.LimitService;
+import com.rosy.austinx.support.utils.LogUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,8 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
         deduplicationHolder.putService(deduplicationType, this);
     }
 
-//    @Autowired
-//    private LogUtils logUtils;
+    @Autowired
+    private LogUtils logUtils;
 
 
     @Override
@@ -42,7 +44,7 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
         // 剔除符合去重条件的用户
         if (CollUtil.isNotEmpty(filterReceiver)) {
             taskInfo.getReceiver().removeAll(filterReceiver);
-            //logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
+            logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
         }
     }
 
