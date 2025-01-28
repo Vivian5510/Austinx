@@ -2,7 +2,7 @@ package com.rosy.austinx.handler.deduplication.limit;
 
 import cn.hutool.core.util.IdUtil;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
-import com.rosy.austinx.common.utils.RedisUtils;
+import com.rosy.austinx.support.utils.RedisUtils;
 import com.rosy.austinx.handler.deduplication.DeduplicationParam;
 import com.rosy.austinx.handler.deduplication.service.AbstractDeduplicationService;
 import jakarta.annotation.PostConstruct;

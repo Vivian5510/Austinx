@@ -1,15 +1,13 @@
 package com.rosy.austinx.common.domain.dto.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * <p>
  * <p>
  * 邮件消息体
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
 @AllArgsConstructor
@@ -26,5 +24,8 @@ public class EmailContentModel extends ContentModel {
      */
     private String content;
 
-
+    /**
+     * 邮件附件链接
+     */
+    private String url;
 }

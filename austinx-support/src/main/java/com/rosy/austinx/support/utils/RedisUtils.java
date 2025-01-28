@@ -1,4 +1,4 @@
-package com.rosy.austinx.common.utils;
+package com.rosy.austinx.support.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import com.google.common.base.Throwables;

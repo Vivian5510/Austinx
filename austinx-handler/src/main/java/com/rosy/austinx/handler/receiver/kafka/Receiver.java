@@ -4,7 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.alibaba.fastjson2.JSON;
 import com.rosy.austinx.common.constant.MessageQueueConstant;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
-import com.rosy.austinx.common.utils.GroupIdMappingUtils;
+import com.rosy.austinx.support.utils.GroupIdMappingUtils;
 import com.rosy.austinx.handler.service.ConsumeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

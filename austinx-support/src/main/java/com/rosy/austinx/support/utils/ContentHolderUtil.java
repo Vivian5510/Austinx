@@ -1,4 +1,4 @@
-package com.rosy.austinx.common.utils;
+package com.rosy.austinx.support.utils;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.expression.MapAccessor;

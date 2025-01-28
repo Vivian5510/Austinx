@@ -1,7 +1,7 @@
 package com.rosy.austinx.handler.receiver.kafka;
 
 import com.rosy.austinx.common.constant.MessageQueueConstant;
-import com.rosy.austinx.common.utils.GroupIdMappingUtils;
+import com.rosy.austinx.support.utils.GroupIdMappingUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.header.Header;

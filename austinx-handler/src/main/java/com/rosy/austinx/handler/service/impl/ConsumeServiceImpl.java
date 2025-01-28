@@ -2,7 +2,7 @@ package com.rosy.austinx.handler.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
-import com.rosy.austinx.common.utils.GroupIdMappingUtils;
+import com.rosy.austinx.support.utils.GroupIdMappingUtils;
 import com.rosy.austinx.handler.pending.Task;
 import com.rosy.austinx.handler.pending.TaskPendingHolder;
 import com.rosy.austinx.handler.service.ConsumeService;

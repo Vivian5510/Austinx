@@ -1,7 +1,7 @@
 package com.rosy.austinx.handler.pending;
 
 import com.dtp.core.thread.DtpExecutor;
-import com.rosy.austinx.common.utils.GroupIdMappingUtils;
+import com.rosy.austinx.support.utils.GroupIdMappingUtils;
 import com.rosy.austinx.handler.config.HandlerThreadPoolConfig;
 import com.rosy.austinx.support.utils.ThreadPoolUtils;
 import jakarta.annotation.PostConstruct;

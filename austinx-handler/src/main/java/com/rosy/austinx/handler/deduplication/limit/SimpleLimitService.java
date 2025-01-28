@@ -3,7 +3,7 @@ package com.rosy.austinx.handler.deduplication.limit;
 import cn.hutool.core.collection.CollUtil;
 import com.rosy.austinx.common.constant.CommonConstant;
 import com.rosy.austinx.common.domain.entity.TaskInfo;
-import com.rosy.austinx.common.utils.RedisUtils;
+import com.rosy.austinx.support.utils.RedisUtils;
 import com.rosy.austinx.handler.deduplication.DeduplicationParam;
 import com.rosy.austinx.handler.deduplication.service.AbstractDeduplicationService;
 import org.springframework.beans.factory.annotation.Autowired;

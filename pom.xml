@@ -57,6 +57,7 @@
         <rabbit.version>3.2.1</rabbit.version>
         <alibaba-spring-cloud.version>2023.0.3.2</alibaba-spring-cloud.version>
         <apollo-client.version>2.3.0</apollo-client.version>
+        <sun.mail.version>1.6.2</sun.mail.version>
     </properties>
 
     <dependencyManagement>
@@ -287,6 +288,12 @@
                 <groupId>com.ctrip.framework.apollo</groupId>
                 <artifactId>apollo-client</artifactId>
                 <version>${apollo-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${sun.mail.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,4 +1,4 @@
-package com.rosy.austinx.common.utils;
+package com.rosy.austinx.support.utils;
 
 import com.rosy.austinx.common.domain.entity.TaskInfo;
 import com.rosy.austinx.common.enums.ChannelType;
