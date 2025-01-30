@@ -24,6 +24,7 @@
         <module>austinx-support</module>
         <module>austinx-service-api-impl</module>
         <module>austinx-common</module>
+        <module>austinx-cron</module>
     </modules>
 
     <properties>
@@ -60,6 +61,7 @@
         <sun.mail.version>1.6.2</sun.mail.version>
         <log.record.version>1.7.0</log.record.version>
         <graylog.version>6.1.1</graylog.version>
+        <xxl-job.version>2.5.0</xxl-job.version>
     </properties>
 
     <dependencyManagement>
@@ -124,6 +126,12 @@
             <dependency>
                 <groupId>com.rosy</groupId>
                 <artifactId>austinx-common</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.rosy</groupId>
+                <artifactId>austinx-cron</artifactId>
                 <version>0.0.1</version>
             </dependency>
 
@@ -309,6 +317,13 @@
                 <groupId>de.siegmar</groupId>
                 <artifactId>logback-gelf</artifactId>
                 <version>${graylog.version}</version>
+            </dependency>
+
+            <!-- xxl-job -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
 
         </dependencies>

@@ -39,6 +39,19 @@ austinx:
     exchange:
       name: austinx.point  # RabbitMQ 交换机的名称
 
+xxl-job:
+  admin:
+    addresses: "http://${austin.xxl.job.ip:localhost}:${austin.xxl.job.port:6767}/xxl-job-admin"
+    username: "${austin.xxl.job.username:admin}"
+    password: "${austin.xxl.job.password:123456}"
+  executor:
+    appname: "${austin.xxl.job.executor.appname:austin}"
+    jobHandlerName: "${austin.xxl.job.executor.jobHandlerName:austinJob}"
+    ip: ""
+    port: "${austin.xxl.executor.port:6666}"
+    logpath: "logs/xxl"
+    logretentiondays: 30
+  accessToken: "${austin.xxl.job.accessToken:default_token}"
 
 
 
