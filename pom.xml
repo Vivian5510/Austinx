@@ -59,6 +59,7 @@
         <apollo-client.version>2.3.0</apollo-client.version>
         <sun.mail.version>1.6.2</sun.mail.version>
         <log.record.version>1.7.0</log.record.version>
+        <graylog.version>6.1.1</graylog.version>
     </properties>
 
     <dependencyManagement>
@@ -302,6 +303,14 @@
                 <artifactId>log-record-springboot3-starter</artifactId>
                 <version>${log.record.version}</version>
             </dependency>
+
+            <!-- graylog -->
+            <dependency>
+                <groupId>de.siegmar</groupId>
+                <artifactId>logback-gelf</artifactId>
+                <version>${graylog.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

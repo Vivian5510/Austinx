@@ -53,5 +53,9 @@
             <groupId>cn.monitor4all</groupId>
             <artifactId>log-record-springboot3-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.siegmar</groupId>
+            <artifactId>logback-gelf</artifactId>
+        </dependency>
     </dependencies>
 </project>

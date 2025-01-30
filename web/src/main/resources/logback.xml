@@ -9,7 +9,7 @@
     <property name="log.path" value="logs"/>
 
     <!-- 从 Spring 环境中读取属性 -->
-    <springProperty scope="context" name="grayLogIp" source="austinx.business.graylog.ip"/>
+    <springProperty scope="context" name="grayLogIp" source="austin.graylog.ip"/>
 
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -29,7 +29,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- 文件名格式：logs/austin-info-日期.编号.log -->
-            <fileNamePattern>${log.path}/austin-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${log.path}/austin-info-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <!-- 单个文件最大大小 -->
             <maxFileSize>100MB</maxFileSize>
             <!-- 日志文件保留天数 -->
@@ -53,7 +53,7 @@
             <charset>UTF-8</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${log.path}/austin-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${log.path}/austin-error-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <maxFileSize>100MB</maxFileSize>
             <maxHistory>15</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
@@ -66,11 +66,42 @@
         </filter>
     </appender>
 
+    <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <!-- Graylog服务的地址 -->
+        <graylogHost>${grayLogIp}</graylogHost>
+        <!-- UDP Input端口 -->
+        <graylogPort>12201</graylogPort>
+        <!-- 最大GELF数据块大小（单位：字节），508为建议最小值，最大值为65467 -->
+        <maxChunkSize>508</maxChunkSize>
+        <!-- 是否使用压缩 -->
+        <useCompression>true</useCompression>
+        <encoder class="de.siegmar.logbackgelf.GelfEncoder">
+            <!-- 是否发送原生的日志信息 -->
+            <includeRawMessage>false</includeRawMessage>
+            <includeMarker>true</includeMarker>
+            <includeMdcData>true</includeMdcData>
+            <includeCallerData>false</includeCallerData>
+            <includeRootCauseData>false</includeRootCauseData>
+            <!-- 是否发送日志级别的名称，否则默认以数字代表日志级别 -->
+            <includeLevelName>true</includeLevelName>
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%m%nopex</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%d - [%thread] %-5level %logger{35} - %msg%n</pattern>
+            </fullPatternLayout>
+
+            <!-- 配置应用名称（服务名称），通过staticField标签可以自定义一些固定的日志字段 -->
+            <staticField>app_name:austin</staticField>
+        </encoder>
+    </appender>
+
     <!-- 根日志记录器配置 -->
     <root level="info">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="INFO_FILE"/>
         <appender-ref ref="ERROR_FILE"/>
+        <appender-ref ref="GELF"/>
     </root>
 
 </configuration>
